@@ -1,0 +1,260 @@
+
+
+body {
+    background: #1b1b1b;                /* Negro suave */
+    color: #f2f2f2;                     /* Blanco suave */
+    font-family: "Georgia", serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* =============================
+   NAVBAR
+   ============================= */
+
+.navbar {
+    background: #240000;                /* Rojo vino oscuro */
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #4d0000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: background 0.4s ease, padding 0.3s ease;
+}
+
+/* ----------- TÍTULO IZQUIERDA ----------- */
+.nav-title {
+    font-size: 28px;
+    color: #e8dccc;                   /* dorado suave */
+    font-weight: bold;
+    font-family: "Georgia";
+    letter-spacing: 1px;
+}
+
+/* ----------- LINKS DERECHA ----------- */
+.nav-right {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-right a {
+    color: #f4e9da;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: "Georgia";
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover elegante */
+.nav-right a:hover {
+    color: #ff9494;                  /* rojo elegante */
+    transform: translateY(-2px);
+}
+
+/* ----------- EFECTO SCROLL ----------- */
+.navbar.scrolled {
+    background: #1a0000;             
+    padding: 10px 30px;              
+    box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
+
+/* =============================
+   TITULOS
+   ============================= */
+
+h1, h2, h3 {
+    margin: 10px;
+    font-weight: normal;
+}
+
+.titulo, .hero-title {
+    font-size: 48px;
+    color: #e0d6c2;                     
+    text-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.subtitulo, .hero-subtitle {
+    color: #d1b7a3;
+    font-size: 22px;
+}
+
+/* =============================
+   HERO SECTION (inicio)
+   ============================= */
+
+.hero {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.hero-title {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.hero-subtitle {
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* =============================
+   BOTONES
+   ============================= */
+
+.btn {
+    background: #3b0000;            
+    color: white;
+    padding: 12px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn:hover {
+    background: #5a0000;            
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #3b0000;
+}
+
+.btn-outline:hover {
+    background: #3b0000;
+    color: white;
+}
+
+/* =============================
+   FORMULARIOS
+   ============================= */
+
+form {
+    margin-top: 30px;
+}
+
+input {
+    display: block;
+    margin: 12px auto;
+    padding: 14px;
+    width: 320px;
+    background: #2a2a2a;
+    border: 2px solid #3b0000;
+    border-radius: 10px;
+    color: #f2f2f2;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: #c8c8c8;
+}
+
+input:focus {
+    border-color: #e60000;
+    outline: none;
+}
+
+/* =============================
+   TARJETAS
+   ============================= */
+
+.card {
+    background: #2a2a2a;
+    width: 340px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255,0,0,0.15);
+    color: #f2f2f2;
+}
+
+/* =============================
+   CONTENEDOR GENERAL
+   ============================= */
+
+.content {
+    padding: 20px;
+}
+
+/* =============================
+   MENÚ - TARJETAS DE PLATILLOS
+   ============================= */
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 30px;
+}
+
+.menu-card {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid #4a2525;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.menu-card:hover {
+    transform: scale(1.03);
+    background: rgba(40, 40, 40, 0.9);
+}
+
+
+/* ---*/
+
+.flash-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.flash {
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: "Georgia", serif;
+}
+
+.flash.success { 
+    background: #5a0000; 
+    color: #fff; 
+}
+
+.flash.danger { 
+    background: #800000; 
+    color: #fff; 
+}
+
+.flash {
+    padding: 12px 20px;
+    margin: 10px auto;
+    width: 90%;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+.flash.success { background-color: #2a4a2a; color: #c8ffc8; }
+.flash.danger { background-color: #4a1a1a; color: #ffbaba; }
+
+.categoria-titulo {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
