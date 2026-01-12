@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión - Mi Restaurante</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
@@ -11,43 +12,48 @@
     <div class="nav-left">
         <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
     </div>
+    <div class="nav-right">
+        <a href="index.html">Inicio</a>
+        <a href="register.html">Registrarse</a>
+    </div>
 </nav>
 
-<div class="form-card">
-    <h2>Iniciar Sesión (Modo Simulación)</h2>
+<div class="form-card" style="margin-top: 50px;">
+    <h2 style="color: #e0d6c2;">Iniciar Sesión (Modo Simulación)</h2>
 
-    <form id="simulacion-login">
-        <label>Correo</label>
-        <input type="email" id="correo-sim" placeholder="Ingresa cualquier correo" required>
+    <form id="form-simulado">
+        <label style="color: #d1b7a3; display: block; margin-bottom: 5px;">Correo</label>
+        <input type="email" id="email-input" required placeholder="correo@ejemplo.com" 
+               style="display: block; margin: 0 auto 20px auto; padding: 12px; width: 80%; background: #2a2a2a; border: 2px solid #3b0000; border-radius: 8px; color: white;">
 
-        <label>Contraseña</label>
-        <input type="password" placeholder="Cualquier clave sirve" required>
+        <label style="color: #d1b7a3; display: block; margin-bottom: 5px;">Contraseña</label>
+        <input type="password" required placeholder="********" 
+               style="display: block; margin: 0 auto 20px auto; padding: 12px; width: 80%; background: #2a2a2a; border: 2px solid #3b0000; border-radius: 8px; color: white;">
 
-        <button type="submit" class="btn">Entrar</button>
+        <button type="submit" class="btn" style="cursor: pointer;">Entrar</button>
     </form>
 </div>
 
 <script>
-    // Esta función captura el clic del botón
-    document.getElementById('simulacion-login').addEventListener('submit', function(e) {
-        e.preventDefault(); // Evita que la página intente buscar un servidor Flask
+    document.getElementById('form-simulado').addEventListener('submit', function(e) {
+        e.preventDefault(); // Detiene cualquier envío al servidor
 
-        // Guardamos datos ficticios que coincidan con tu modelo de base de datos
-        const usuarioFalso = {
+        // Creamos la sesión ficticia con los datos de tu modelo Cliente
+        const mockUser = {
             nombre: "Profesor Evaluador",
-            correo: document.getElementById('correo-sim').value,
+            correo: document.getElementById('email-input').value,
             telefono: "55-1234-5678",
             calle: "Av. Universidad",
-            numero: "3000",
+            numero: "100",
             colonia: "Coyoacán",
             ciudad: "CDMX"
         };
 
-        // El 'localStorage' guarda la sesión en el navegador (como hacía Flask en el server)
-        localStorage.setItem('user', JSON.stringify(usuarioFalso));
+        // Guardamos en el navegador (emulando la sesión de Flask)
+        localStorage.setItem('user', JSON.stringify(mockUser));
 
-        // Redirigimos al Dashboard
-        window.location.href = "dashboard.html";
+        // Saltamos directamente al dashboard
+        window.location.href = 'dashboard.html';
     });
 </script>
 
