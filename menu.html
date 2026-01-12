@@ -2,36 +2,84 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Menú</title>
+    <title>Menú - Mi Restaurante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; text-align: center; }
+        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; }
+        .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
+        .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; font-size: 18px; }
+        .titulo { font-size: 45px; color: #e0d6c2; margin: 30px 0; }
+        .categoria-titulo { color: #e8dccc; border-bottom: 2px solid #f2f2f2; display: block; padding: 10px; margin: 40px 30px 20px 30px; font-size: 24px; text-align: center; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 0 30px 30px 30px; }
+        .menu-card { background: rgba(20, 20, 20, 0.8); border: 1px solid #4a2525; padding: 20px; border-radius: 12px; transition: 0.3s; }
+        .menu-card:hover { transform: scale(1.03); border-color: #ff9494; }
+        .menu-card h2 { color: #e8dccc; font-size: 20px; margin-bottom: 10px; }
+        .menu-card p { color: #d1b7a3; font-size: 14px; min-height: 40px; }
+        .menu-card strong { display: block; margin: 15px 0; font-size: 18px; color: #f2f2f2; }
+        .btn { background: transparent; color: white; padding: 10px; border-radius: 10px; border: 2px solid #3b0000; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn:hover { background: #3b0000; }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-left">
-            <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-        </div>
-        <div class="nav-right">
-            <a href="index.html">Inicio</a>
-            <a href="menu.html">Menú</a>
-            <a href="dashboard.html">Mi cuenta</a>
-            <a href="index.html" class="logout">Salir</a>
-        </div>
-    </nav>
 
-    <main class="content">
-        <h1 class="titulo">Menú</h1>
-        <h2 class="categoria-titulo">Platillos Principales</h2>
-        <div class="menu-grid">
-            <div class="menu-card">
-                <h2>Ejemplo de Platillo</h2>
-                <p>Descripción deliciosa del platillo.</p>
-                <p><strong>$150.00</strong></p>
-                <button class="btn btn-outline">Agregar al pedido</button>
-            </div>
-        </div>
-    </main>
+<nav class="navbar">
+    <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
+    <div class="nav-right">
+        <a href="index.html">Inicio</a>
+        <a href="dashboard.html">Mi cuenta</a>
+        <a href="mi_pedido.html" style="color: #ff9494;">Mi Pedido (<span id="count">0</span>)</a>
+    </div>
+</nav>
+
+<h1 class="titulo">Menú</h1>
+
+<h2 class="categoria-titulo">Tacos</h2>
+<div class="menu-grid">
+    <div class="menu-card"><h2>Taco al pastor</h2><p>Carne de cerdo adobada con piña</p><strong>$18.0</strong><button class="btn" onclick="agregar('Taco al pastor', 18.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Taco de suadero</h2><p>Suadero suave en tortilla de maíz</p><strong>$20.0</strong><button class="btn" onclick="agregar('Taco de suadero', 20.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Taco de bistec</h2><p>Bistec asado con cebolla</p><strong>$22.0</strong><button class="btn" onclick="agregar('Taco de bistec', 22.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Taco campechano</h2><p>Mezcla de bistec y chorizo</p><strong>$25.0</strong><button class="btn" onclick="agregar('Taco campechano', 25.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Taco de longaniza</h2><p>Longaniza dorada al comal</p><strong>$20.0</strong><button class="btn" onclick="agregar('Taco de longaniza', 20.0)">Agregar al pedido</button></div>
+</div>
+
+<h2 class="categoria-titulo">Comida casera</h2>
+<div class="menu-grid">
+    <div class="menu-card"><h2>Milanesa de pollo</h2><p>Milanesa empanizada con arroz</p><strong>$85.0</strong><button class="btn" onclick="agregar('Milanesa de pollo', 85.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Enchiladas verdes</h2><p>Enchiladas con salsa verde</p><strong>$80.0</strong><button class="btn" onclick="agregar('Enchiladas verdes', 80.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Pollo en mole</h2><p>Pollo bañado en mole casero</p><strong>$95.0</strong><button class="btn" onclick="agregar('Pollo en mole', 95.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Chiles rellenos</h2><p>Chiles poblanos rellenos</p><strong>$90.0</strong><button class="btn" onclick="agregar('Chiles rellenos', 90.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Guisado del día</h2><p>Guisado tradicional del día</p><strong>$75.0</strong><button class="btn" onclick="agregar('Guisado del día', 75.0)">Agregar al pedido</button></div>
+</div>
+
+<h2 class="categoria-titulo">Bebidas</h2>
+<div class="menu-grid">
+    <div class="menu-card"><h2>Agua de jamaica</h2><p>Agua fresca natural</p><strong>$20.0</strong><button class="btn" onclick="agregar('Agua de jamaica', 20.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Agua de horchata</h2><p>Agua de arroz con canela</p><strong>$20.0</strong><button class="btn" onclick="agregar('Agua de horchata', 20.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Refresco</h2><p>Refresco de 600 ml</p><strong>$25.0</strong><button class="btn" onclick="agregar('Refresco', 25.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Café de olla</h2><p>Café tradicional con piloncillo</p><strong>$18.0</strong><button class="btn" onclick="agregar('Café de olla', 18.0)">Agregar al pedido</button></div>
+</div>
+
+<h2 class="categoria-titulo">Postres</h2>
+<div class="menu-grid">
+    <div class="menu-card"><h2>Flan napolitano</h2><p>Flan casero tradicional</p><strong>$40.0</strong><button class="btn" onclick="agregar('Flan napolitano', 40.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Arroz con leche</h2><p>Arroz con canela</p><strong>$35.0</strong><button class="btn" onclick="agregar('Arroz con leche', 35.0)">Agregar al pedido</button></div>
+    <div class="menu-card"><h2>Gelatina de frutas</h2><p>Gelatina natural</p><strong>$30.0</strong><button class="btn" onclick="agregar('Gelatina de frutas', 30.0)">Agregar al pedido</button></div>
+</div>
+
+<script>
+    function agregar(nombre, precio) {
+        let pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+        pedido.push({ nombre, precio, cantidad: 1 });
+        localStorage.setItem('pedido', JSON.stringify(pedido));
+        actualizarContador();
+    }
+    function actualizarContador() {
+        const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+        document.getElementById('count').innerText = pedido.length;
+    }
+    document.addEventListener('DOMContentLoaded', actualizarContador);
+</script>
 </body>
 </html>
-
 
