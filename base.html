@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Restaurante - Simulación</title>
+    <title>Mi Restaurante - Cascarón Estático</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/style.css">
 </head>
@@ -17,6 +17,7 @@
 </nav>
 
 <main class="content">
+    <div id="flash-container"></div>
     </main>
 
 <script>
@@ -31,10 +32,8 @@
                 <a href="menu.html">Menú</a>
                 <a href="dashboard.html">Mi cuenta</a>
                 <a href="mi_pedido.html">Mi Pedido (${pedido.length})</a>
-                <span class="nav-user" style="color: #e8dccc; font-weight: bold; margin-left: 15px;">
-                    ${user.nombre}
-                </span>
-                <a href="#" onclick="logout()" style="color: #ff9494;">Salir</a>
+                <span style="color: #e8dccc; font-weight: bold; margin-left: 10px;">${user.nombre}</span>
+                <a href="#" onclick="logout()" style="color: #ff9494; margin-left: 10px;">Salir</a>
             `;
         } else {
             navLinks.innerHTML = `
