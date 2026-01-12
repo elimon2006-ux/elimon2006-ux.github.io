@@ -1,36 +1,41 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Mi Restaurante</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
     <div class="nav-left">
         <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
     </div>
-
-    <div class="nav-right">
-        <a href="index.html">Inicio</a>
-        <a href="menu.html">Menú</a>
-        <a href="dashboard.html">Mi cuenta</a>
-        <a href="login.html">Iniciar sesión</a>
-        <a href="register.html">Registrarse</a>
-    </div>
+    <div class="nav-right" id="nav-links">
+        </div>
 </nav>
 
-<!-- ================= CONTENIDO ================= -->
-<main class="content">
-    <!-- CONTENIDO DE CADA PÁGINA -->
-</main>
+<script>
+    // Función para actualizar la Navbar dinámicamente
+    function actualizarNavbar() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const navLinks = document.getElementById('nav-links');
+        
+        if (user) {
+            navLinks.innerHTML = `
+                <a href="index.html">Inicio</a>
+                <a href="menu.html">Menú</a>
+                <a href="dashboard.html">Mi cuenta</a>
+                <a href="mi_pedido.html">Mi Pedido</a>
+                <span class="nav-user" style="color: #e8dccc;">${user.nombre}</span>
+                <a href="#" onclick="logout()" class="logout">Salir</a>
+            `;
+        } else {
+            navLinks.innerHTML = `
+                <a href="index.html">Inicio</a>
+                <a href="login.html">Iniciar sesión</a>
+                <a href="register.html">Registrarse</a>
+            `;
+        }
+    }
 
-</body>
-</html>
+    function logout() {
+        localStorage.removeItem('user');
+        localStorage.removeItem('pedido');
+        window.location.href = 'index.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', actualizarNavbar);
+</script>
 
