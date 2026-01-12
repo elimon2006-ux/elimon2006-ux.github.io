@@ -2,41 +2,124 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Iniciar Sesión - Mi Restaurante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body style="background-color: #1a1a1a; color: white; margin: 0; font-family: 'Segoe UI', sans-serif;">
+    <title>Iniciar Sesión - Mi Restaurante</title>
+    <style>
+        /* Estilos basados en la interfaz de la imagen */
+        body {
+            background-color: #1a1a1a; /* Fondo oscuro */
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
 
-    <nav style="background-color: #110000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4a0000;">
-        <a href="index.html" style="color: #f1c40f; text-decoration: underline; font-size: 1.5rem; font-weight: bold;">🍽️ Mi Restaurante</a>
-        <div style="display: flex; gap: 20px;">
-            <a href="index.html" style="color: white; text-decoration: none;">Inicio</a>
-            <a href="login.html" style="color: white; text-decoration: none;">Iniciar sesión</a>
-            <a href="register.html" style="color: white; text-decoration: none;">Registrarse</a>
+        /* Barra de navegación superior */
+        .navbar {
+            background-color: #110000;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-logo {
+            color: #f1c40f;
+            text-decoration: underline;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        /* Contenedor principal del formulario */
+        .login-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 50px;
+        }
+
+        h2 {
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            width: 300px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* Campos de entrada */
+        input {
+            width: 100%;
+            padding: 10px;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Botón Entrar con funcionalidad de redirección */
+        .btn-entrar {
+            display: inline-block;
+            background-color: #4a0000;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">🍽️ Mi Restaurante</a>
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="register.html">Registrarse</a>
         </div>
     </nav>
 
-    <main style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh;">
-        <div style="background: #222; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 350px;">
-            <h2 style="margin-top: 0; color: #f1c40f;">Iniciar Sesión</h2>
-            
-            <div style="text-align: left; margin-top: 20px;">
-                <label style="display: block; margin-bottom: 5px; color: #ccc;">Correo</label>
-                <input type="email" style="width: 100%; padding: 12px; background: #333; border: 1px solid #444; color: white; border-radius: 5px; box-sizing: border-box; margin-bottom: 20px;">
-                
-                <label style="display: block; margin-bottom: 5px; color: #ccc;">Contraseña</label>
-                <input type="password" style="width: 100%; padding: 12px; background: #333; border: 1px solid #444; color: white; border-radius: 5px; box-sizing: border-box; margin-bottom: 25px;">
-                
-                <a href="index.html" 
-                   style="display: block; text-align: center; background-color: #4a0000; color: white; padding: 14px; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; font-weight: bold; text-decoration: none; transition: 0.3s;">
-                    Entrar
-                </a>
-            </div>
+    <main class="login-container">
+        <h2>Iniciar Sesión</h2>
+        
+        <div class="form-group">
+            <label>Correo</label>
+            <input type="email">
         </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password">
+        </div>
+
+        <a href="index.html" class="btn-entrar">Entrar</a>
     </main>
 
 </body>
 </html>
-
 
