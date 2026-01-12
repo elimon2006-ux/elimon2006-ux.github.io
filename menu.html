@@ -15,7 +15,8 @@
             <a href="index.html">Inicio</a>
             <a href="menu.html">Menú</a>
             <a href="dashboard.html">Mi cuenta</a>
-            <a href="index.html" class="logout">Salir</a>
+            <a href="mi_pedido.html" style="color: #ff9494;">Mi Pedido (<span id="count">0</span>)</a>
+            <a href="#" onclick="localStorage.clear(); window.location.href='index.html';" class="logout">Salir</a>
         </div>
     </nav>
 
@@ -24,15 +25,51 @@
         <h2 class="categoria-titulo">Platillos Principales</h2>
         <div class="menu-grid">
             <div class="menu-card">
-                <h2>Ejemplo de Platillo</h2>
-                <p>Descripción deliciosa del platillo.</p>
-                <p><strong>$150.00</strong></p>
-                <button class="btn btn-outline">Agregar al pedido</button>
+                <h2>Taco al pastor</h2>
+                <p>Carne de cerdo adobada con piña.</p>
+                <p><strong>$18.00</strong></p>
+                <button class="btn btn-outline" onclick="agregarAlPedido('Taco al pastor', 18.00)">Agregar al pedido</button>
+            </div>
+
+            <div class="menu-card">
+                <h2>Enchiladas verdes</h2>
+                <p>Enchiladas con salsa verde y crema.</p>
+                <p><strong>$80.00</strong></p>
+                <button class="btn btn-outline" onclick="agregarAlPedido('Enchiladas verdes', 80.00)">Agregar al pedido</button>
             </div>
         </div>
     </main>
+
+    <script>
+        // Función para guardar los platillos en el navegador
+        function agregarAlPedido(nombre, precio) {
+            let pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+            
+            // Verificamos si ya existe para sumar cantidad
+            let itemExistente = pedido.find(item => item.nombre === nombre);
+            if (itemExistente) {
+                itemExistente.cantidad += 1;
+            } else {
+                pedido.push({ nombre: nombre, precio: precio, cantidad: 1 });
+            }
+
+            localStorage.setItem('pedido', JSON.stringify(pedido));
+            actualizarContador();
+            alert(nombre + " se agregó a tu pedido.");
+        }
+
+        // Función para actualizar el número en la barra de navegación
+        function actualizarContador() {
+            const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+            const total = pedido.reduce((acc, item) => acc + item.cantidad, 0);
+            document.getElementById('count').innerText = total;
+        }
+
+        // Cargar el contador al abrir la página
+        document.addEventListener('DOMContentLoaded', actualizarContador);
+    </script>
 </body>
 </html>
-</html>
+
 
 
