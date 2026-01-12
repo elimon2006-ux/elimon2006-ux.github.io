@@ -4,60 +4,64 @@
     <meta charset="UTF-8">
     <title>Iniciar Sesión - Mi Restaurante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style.css">
+    <style>
+        /* Estilos integrados para evitar errores de carga */
+        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; text-align: center; }
+        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; }
+        .nav-title { font-size: 24px; color: #e8dccc; text-decoration: none; font-weight: bold; }
+        .form-card { background: #2a2a2a; border: 1px solid #4a2525; padding: 40px; border-radius: 12px; width: 90%; max-width: 400px; margin: 50px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h2 { color: #e8dccc; margin-bottom: 25px; }
+        label { display: block; text-align: left; margin-bottom: 8px; color: #d1b7a3; }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 2px solid #3b0000; background: #1b1b1b; color: white; box-sizing: border-box; }
+        .btn { background: #3b0000; color: #f4e9da; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s; }
+        .btn:hover { background: #5a0000; transform: translateY(-2px); }
+    </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="nav-left">
-        <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-    </div>
-    <div class="nav-right">
-        <a href="index.html">Inicio</a>
-        <a href="register.html">Registrarse</a>
-    </div>
+    <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
 </nav>
 
-<div class="form-card" style="margin-top: 50px;">
-    <h2 style="color: #e0d6c2;">Iniciar Sesión (Modo Simulación)</h2>
+<div class="form-card">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+        <label>Correo Electrónico</label>
+        <input type="email" id="email" placeholder="ejemplo@correo.com" required>
 
-    <form id="form-simulado">
-        <label style="color: #d1b7a3; display: block; margin-bottom: 5px;">Correo</label>
-        <input type="email" id="email-input" required placeholder="correo@ejemplo.com" 
-               style="display: block; margin: 0 auto 20px auto; padding: 12px; width: 80%; background: #2a2a2a; border: 2px solid #3b0000; border-radius: 8px; color: white;">
+        <label>Contraseña</label>
+        <input type="password" placeholder="Cualquier contraseña" required>
 
-        <label style="color: #d1b7a3; display: block; margin-bottom: 5px;">Contraseña</label>
-        <input type="password" required placeholder="********" 
-               style="display: block; margin: 0 auto 20px auto; padding: 12px; width: 80%; background: #2a2a2a; border: 2px solid #3b0000; border-radius: 8px; color: white;">
-
-        <button type="submit" class="btn" style="cursor: pointer;">Entrar</button>
+        <button type="submit" class="btn">Entrar al Sistema</button>
     </form>
 </div>
 
 <script>
-    document.getElementById('form-simulado').addEventListener('submit', function(e) {
-        e.preventDefault(); // Detiene cualquier envío al servidor
-
-        // Creamos la sesión ficticia con los datos de tu modelo Cliente
-        const mockUser = {
+    // Este script sobreescribe cualquier comportamiento anterior
+    document.getElementById('loginForm').onsubmit = function(e) {
+        e.preventDefault(); 
+        
+        // Simulamos que el servidor nos dio estos datos
+        const datosUsuario = {
             nombre: "Profesor Evaluador",
-            correo: document.getElementById('email-input').value,
+            correo: document.getElementById('email').value,
             telefono: "55-1234-5678",
             calle: "Av. Universidad",
-            numero: "100",
+            numero: "3000",
             colonia: "Coyoacán",
             ciudad: "CDMX"
         };
 
-        // Guardamos en el navegador (emulando la sesión de Flask)
-        localStorage.setItem('user', JSON.stringify(mockUser));
+        // Guardamos la sesión localmente
+        localStorage.setItem('user', JSON.stringify(datosUsuario));
 
-        // Saltamos directamente al dashboard
-        window.location.href = 'dashboard.html';
-    });
+        // Forzamos el salto al dashboard
+        window.location.href = "dashboard.html";
+    };
 </script>
 
 </body>
 </html>
+
 
 
