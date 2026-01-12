@@ -2,8 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login - Mi Restaurante</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Mi Restaurante</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
@@ -14,36 +13,45 @@
     </div>
 </nav>
 
-<div class="form-card" style="margin-top: 50px;">
+<div class="form-card">
     <h2>Iniciar Sesión (Modo Simulación)</h2>
-    <form id="loginForm">
+
+    <form id="simulacion-login">
         <label>Correo</label>
-        <input type="email" id="correo" required placeholder="correo@ejemplo.com">
-        
+        <input type="email" id="correo-sim" placeholder="Ingresa cualquier correo" required>
+
         <label>Contraseña</label>
-        <input type="password" required placeholder="********">
-        
+        <input type="password" placeholder="Cualquier clave sirve" required>
+
         <button type="submit" class="btn">Entrar</button>
     </form>
 </div>
 
 <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const userMock = {
-            id_cliente: 1,
+    // Esta función captura el clic del botón
+    document.getElementById('simulacion-login').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que la página intente buscar un servidor Flask
+
+        // Guardamos datos ficticios que coincidan con tu modelo de base de datos
+        const usuarioFalso = {
             nombre: "Profesor Evaluador",
-            correo: document.getElementById('correo').value,
+            correo: document.getElementById('correo-sim').value,
             telefono: "55-1234-5678",
             calle: "Av. Universidad",
-            numero: "100",
-            colonia: "Copilco",
+            numero: "3000",
+            colonia: "Coyoacán",
             ciudad: "CDMX"
         };
-        localStorage.setItem('user', JSON.stringify(userMock));
-        window.location.href = 'dashboard.html';
+
+        // El 'localStorage' guarda la sesión en el navegador (como hacía Flask en el server)
+        localStorage.setItem('user', JSON.stringify(usuarioFalso));
+
+        // Redirigimos al Dashboard
+        window.location.href = "dashboard.html";
     });
 </script>
+
 </body>
 </html>
+
 
