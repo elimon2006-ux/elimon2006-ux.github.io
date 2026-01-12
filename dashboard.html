@@ -2,43 +2,40 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi cuenta - Mi Restaurante</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <title>Mi Cuenta - Mi Restaurante</title>
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-
-<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
-    <div class="nav-left">
-        <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-    </div>
-
-    <div class="nav-right">
-        <a href="index.html">Inicio</a>
-        <a href="menu.html">Menú</a>
-        <a href="dashboard.html">Mi cuenta</a>
-        <a href="login.html">Iniciar sesión</a>
-        <a href="register.html">Registrarse</a>
-    </div>
+    <div class="nav-left"><a class="nav-title" href="index.html">🍽️ Mi Restaurante</a></div>
+    <div class="nav-right" id="nav-links"></div>
 </nav>
 
-<!-- ================= CONTENIDO ================= -->
-<main class="content">
-
-    <h2 class="section-title">Bienvenido, Usuario</h2>
-
+<div class="content">
+    <h2 class="section-title" id="welcome-msg">Cargando perfil...</h2>
     <div class="card user-card">
-        <p><b>Correo:</b> usuario@email.com</p>
-        <p><b>Teléfono:</b> 55 1234 5678</p>
-
+        <p><b>Correo:</b> <span id="u-correo"></span></p>
+        <p><b>Teléfono:</b> <span id="u-tel"></span></p>
         <h3 class="sub">Dirección</h3>
-        <p>Calle Ejemplo #123, Colonia Centro, Ciudad</p>
+        <p id="u-direccion"></p>
+        <button onclick="window.location.href='menu.html'" class="btn" style="margin-top:20px;">Ver Menú</button>
     </div>
+</div>
 
-</main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) { window.location.href = 'login.html'; return; }
 
+        document.getElementById('welcome-msg').innerText = `Bienvenido, ${user.nombre}`;
+        document.getElementById('u-correo').innerText = user.correo;
+        document.getElementById('u-tel').innerText = user.telefono;
+        document.getElementById('u-direccion').innerText = `${user.calle} #${user.numero}, ${user.colonia}, ${user.ciudad}`;
+        
+        // Cargar navbar
+        const navLinks = document.getElementById('nav-links');
+        navLinks.innerHTML = `<a href="index.html">Inicio</a><a href="menu.html">Menú</a><a href="#" onclick="localStorage.removeItem('user'); location.reload();">Salir</a>`;
+    });
+</script>
 </body>
 </html>
