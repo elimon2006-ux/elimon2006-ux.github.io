@@ -3,14 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi Pedido</title>
-    <link rel="stylesheet" href="style.css">
-    
     <style>
-        body { background-color: #1b1b1b; color: white; font-family: "Georgia", serif; text-align: center; }
-        table { width: 90%; margin: 20px auto; border-collapse: collapse; }
-        th { background-color: #240000; color: #d1b7a3; padding: 15px; }
-        td { border-bottom: 1px solid #4a2525; padding: 15px; }
-        .btn-outline { border: 1px solid white; background: transparent; color: white; padding: 5px 10px; cursor: pointer; }
+        body {
+            background: #1b1b1b;
+            color: #f2f2f2;
+            font-family: "Georgia", serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #240000;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #4d0000;
+        }
+        .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
+        .nav-right a { color: #f4e9da; font-size: 18px; text-decoration: none; margin-left: 20px; }
+
+        /* Tabla */
+        table {
+            width: 90%;
+            margin: 40px auto;
+            border-collapse: collapse;
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th {
+            background-color: #3b0000;
+            color: #e0d6c2;
+            padding: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #4a2525;
+            font-size: 18px;
+        }
+        
+        /* Botones */
+        .btn {
+            background: #3b0000;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn-sm {
+            background: transparent;
+            border: 1px solid #aaa;
+            color: white;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        .btn-sm:hover { background: #555; }
+        
+        .btn-del {
+            background: transparent;
+            border: 1px solid #ff4444;
+            color: #ff4444;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-del:hover { background: #ff4444; color: white; }
     </style>
 </head>
 <body>
@@ -23,10 +91,10 @@
     </div>
 </nav>
 
-<h1 class="titulo">Tu Pedido</h1>
+<h1 style="margin-top: 40px; font-size: 40px; color: #e0d6c2;">Tu Pedido</h1>
 
-<div id="mensaje-exito" style="display:none; background:#2a4a2a; color:#c8ffc8; padding:15px; margin:20px auto; border-radius:8px; width:50%;">
-    ¡Pedido confirmado exitosamente! La cocina está preparando tus alimentos.
+<div id="mensaje-exito" style="display:none; background:#2a4a2a; border: 1px solid #4a7a4a; color:#c8ffc8; padding:20px; margin:20px auto; border-radius:8px; width:60%; font-size: 1.2rem;">
+    ✅ <b>¡Pedido confirmado exitosamente!</b><br>La cocina está preparando tus alimentos.
 </div>
 
 <table id="tabla-pedido">
@@ -46,9 +114,9 @@
             <td><span class="cantidad">2</span></td>
             <td class="subtotal">$36.0</td>
             <td>
-                <button class="btn-outline" onclick="cambiarCantidad(this, 1)">+</button>
-                <button class="btn-outline" onclick="cambiarCantidad(this, -1)">-</button>
-                <button class="btn-outline" style="border-color:#ff4444; color:#ff4444;" onclick="eliminarFila(this)">✕</button>
+                <button class="btn-sm" onclick="cambiarCantidad(this, 1)">+</button>
+                <button class="btn-sm" onclick="cambiarCantidad(this, -1)">-</button>
+                <button class="btn-del" onclick="eliminarFila(this)">Eliminar</button>
             </td>
         </tr>
 
@@ -58,9 +126,9 @@
             <td><span class="cantidad">1</span></td>
             <td class="subtotal">$80.0</td>
             <td>
-                <button class="btn-outline" onclick="cambiarCantidad(this, 1)">+</button>
-                <button class="btn-outline" onclick="cambiarCantidad(this, -1)">-</button>
-                <button class="btn-outline" style="border-color:#ff4444; color:#ff4444;" onclick="eliminarFila(this)">✕</button>
+                <button class="btn-sm" onclick="cambiarCantidad(this, 1)">+</button>
+                <button class="btn-sm" onclick="cambiarCantidad(this, -1)">-</button>
+                <button class="btn-del" onclick="eliminarFila(this)">Eliminar</button>
             </td>
         </tr>
 
@@ -70,17 +138,17 @@
             <td><span class="cantidad">1</span></td>
             <td class="subtotal">$40.0</td>
             <td>
-                <button class="btn-outline" onclick="cambiarCantidad(this, 1)">+</button>
-                <button class="btn-outline" onclick="cambiarCantidad(this, -1)">-</button>
-                <button class="btn-outline" style="border-color:#ff4444; color:#ff4444;" onclick="eliminarFila(this)">✕</button>
+                <button class="btn-sm" onclick="cambiarCantidad(this, 1)">+</button>
+                <button class="btn-sm" onclick="cambiarCantidad(this, -1)">-</button>
+                <button class="btn-del" onclick="eliminarFila(this)">Eliminar</button>
             </td>
         </tr>
     </tbody>
 </table>
 
-<h2 style="margin-top:20px;">Total: <span id="gran-total">$156.0</span></h2>
+<h2 id="texto-total" style="margin-top:30px; font-size: 28px;">Total: <span id="gran-total">$156.0</span></h2>
 
-<button onclick="confirmarPedido()" class="btn" style="background:#3b0000; color:white; padding:12px 24px; font-size:18px; border:none; border-radius:8px; cursor:pointer; margin-top:20px;">
+<button id="btn-confirmar" onclick="confirmarPedido()" class="btn" style="margin-top: 20px;">
     Confirmar Pedido
 </button>
 
@@ -91,6 +159,7 @@
             const precio = parseFloat(fila.querySelector('.precio').dataset.valor);
             const cantidad = parseInt(fila.querySelector('.cantidad').innerText);
             const subtotal = precio * cantidad;
+            
             fila.querySelector('.subtotal').innerText = '$' + subtotal.toFixed(1);
             total += subtotal;
         });
@@ -106,7 +175,7 @@
     }
 
     function eliminarFila(btn) {
-        if(confirm("¿Eliminar platillo?")) {
+        if(confirm("¿Seguro que deseas eliminar este platillo?")) {
             btn.closest('tr').remove();
             actualizarTotal();
         }
@@ -114,8 +183,9 @@
 
     function confirmarPedido() {
         document.getElementById('tabla-pedido').style.display = 'none';
-        document.querySelector('h2').style.display = 'none';
-        document.querySelector('button[onclick="confirmarPedido()"]').style.display = 'none';
+        document.getElementById('texto-total').style.display = 'none';
+        document.getElementById('btn-confirmar').style.display = 'none';
+        
         document.getElementById('mensaje-exito').style.display = 'block';
     }
 </script>
