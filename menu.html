@@ -2,34 +2,59 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Menú</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <title>Menú - Mi Restaurante</title>
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-left">
-            <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-        </div>
-        <div class="nav-right">
-            <a href="index.html">Inicio</a>
-            <a href="menu.html">Menú</a>
-            <a href="dashboard.html">Mi cuenta</a>
-            <a href="index.html" class="logout">Salir</a>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="nav-left"><a class="nav-title" href="index.html">🍽️ Mi Restaurante</a></div>
+    <div class="nav-right">
+        <a href="index.html">Inicio</a>
+        <a href="mi_pedido.html" id="cart-btn">Mi Pedido (0)</a>
+    </div>
+</nav>
 
-    <main class="content">
-        <h1 class="titulo">Menú</h1>
-        <h2 class="categoria-titulo">Platillos Principales</h2>
-        <div class="menu-grid">
-            <div class="menu-card">
-                <h2>Ejemplo de Platillo</h2>
-                <p>Descripción deliciosa del platillo.</p>
-                <p><strong>$150.00</strong></p>
-                <button class="btn btn-outline">Agregar al pedido</button>
-            </div>
-        </div>
-    </main>
+<h1 class="titulo">Menú de Especialidades</h1>
+
+<h2 class="categoria-titulo">TACOS</h2>
+<div class="menu-grid">
+    <div class="menu-card">
+        <h2>Tacos al Pastor</h2>
+        <p>Deliciosa carne marinada con piña.</p>
+        <p><strong>$45.00</strong></p>
+        <button class="btn btn-outline" onclick="agregar('Tacos al Pastor', 45)">Agregar</button>
+    </div>
+    <div class="menu-card">
+        <h2>Tacos de Bistec</h2>
+        <p>Carne de res de primera calidad.</p>
+        <p><strong>$50.00</strong></p>
+        <button class="btn btn-outline" onclick="agregar('Tacos de Bistec', 50)">Agregar</button>
+    </div>
+</div>
+
+<h2 class="categoria-titulo">BEBIDAS</h2>
+<div class="menu-grid">
+    <div class="menu-card">
+        <h2>Agua de Horchata</h2>
+        <p>Receta artesanal con canela.</p>
+        <p><strong>$25.00</strong></p>
+        <button class="btn btn-outline" onclick="agregar('Agua de Horchata', 25)">Agregar</button>
+    </div>
+</div>
+
+<script>
+    function agregar(nombre, precio) {
+        let pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+        pedido.push({ nombre, precio, cantidad: 1 });
+        localStorage.setItem('pedido', JSON.stringify(pedido));
+        document.getElementById('cart-btn').innerText = `Mi Pedido (${pedido.length})`;
+        alert("Agregado al pedido.");
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+        document.getElementById('cart-btn').innerText = `Mi Pedido (${pedido.length})`;
+    });
+</script>
 </body>
 </html>
