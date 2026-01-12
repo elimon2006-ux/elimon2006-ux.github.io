@@ -2,40 +2,47 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Cuenta - Mi Restaurante</title>
-    <link rel="stylesheet" href="static/style.css">
+    <title>Dashboard - Mi Restaurante</title>
+    <style>
+        /* Mismos estilos del base para consistencia */
+        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; text-align: center; }
+        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; }
+        .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
+        .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; }
+        .card { background: #2a2a2a; width: 90%; max-width: 450px; margin: 50px auto; padding: 30px; border-radius: 12px; border: 1px solid #4a2525; text-align: left; }
+        h2 { color: #e8dccc; text-align: center; }
+        .btn { background: #3b0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: block; text-align: center; margin-top: 20px; }
+    </style>
 </head>
 <body>
-<nav class="navbar">
-    <div class="nav-left"><a class="nav-title" href="index.html">🍽️ Mi Restaurante</a></div>
-    <div class="nav-right" id="nav-links"></div>
-</nav>
+    <nav class="navbar">
+        <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
+        <div class="nav-right">
+            <a href="index.html">Inicio</a>
+            <a href="menu.html">Menú</a>
+            <a href="#" onclick="localStorage.clear(); window.location.href='index.html';" style="color: #ff9494;">Salir</a>
+        </div>
+    </nav>
 
-<div class="content">
-    <h2 class="section-title" id="welcome-msg">Cargando perfil...</h2>
-    <div class="card user-card">
+    <div class="card">
+        <h2 id="saludo">Bienvenido</h2>
         <p><b>Correo:</b> <span id="u-correo"></span></p>
         <p><b>Teléfono:</b> <span id="u-tel"></span></p>
-        <h3 class="sub">Dirección</h3>
+        <h3 style="color: #d1b7a3; border-bottom: 1px solid #4a2525; padding-bottom: 5px;">Dirección</h3>
         <p id="u-direccion"></p>
-        <button onclick="window.location.href='menu.html'" class="btn" style="margin-top:20px;">Ver Menú</button>
+        <a href="menu.html" class="btn">Ver Menú</a>
     </div>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (!user) { window.location.href = 'login.html'; return; }
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) { window.location.href = 'login.html'; return; }
 
-        document.getElementById('welcome-msg').innerText = `Bienvenido, ${user.nombre}`;
-        document.getElementById('u-correo').innerText = user.correo;
-        document.getElementById('u-tel').innerText = user.telefono;
-        document.getElementById('u-direccion').innerText = `${user.calle} #${user.numero}, ${user.colonia}, ${user.ciudad}`;
-        
-        // Cargar navbar
-        const navLinks = document.getElementById('nav-links');
-        navLinks.innerHTML = `<a href="index.html">Inicio</a><a href="menu.html">Menú</a><a href="#" onclick="localStorage.removeItem('user'); location.reload();">Salir</a>`;
-    });
-</script>
+            document.getElementById('saludo').innerText = `Bienvenido, ${user.nombre}`;
+            document.getElementById('u-correo').innerText = user.correo;
+            document.getElementById('u-tel').innerText = user.telefono;
+            document.getElementById('u-direccion').innerText = `${user.calle} #${user.numero}, ${user.colonia}, ${user.ciudad}`;
+        });
+    </script>
 </body>
 </html>
