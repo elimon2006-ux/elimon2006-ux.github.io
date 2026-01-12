@@ -2,119 +2,92 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Pedido - Mi Restaurante</title>
+    <title>Menú - Mi Restaurante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* ESTILOS INTEGRADOS PARA GARANTIZAR EL DISEÑO OSCURO */
+        /* RESTAURACIÓN DE ESTILOS DEL style.css ORIGINAL */
         body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; padding: 0; text-align: center; }
-        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; }
+        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
         .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
         .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; font-size: 18px; }
         
-        .content { padding: 40px 20px; }
-        .titulo { font-size: 48px; color: #e0d6c2; margin-bottom: 30px; }
+        .titulo { font-size: 45px; color: #e0d6c2; margin-top: 30px; }
+        .categoria-titulo { color: #e8dccc; border-bottom: 2px solid #4a2525; display: inline-block; padding: 5px 30px; margin-top: 40px; font-size: 24px; }
 
-        /* TABLA DE PEDIDOS */
-        .tabla-container { background: #2a2a2a; border-radius: 12px; padding: 20px; border: 1px solid #4a2525; max-width: 900px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        table { width: 100%; border-collapse: collapse; color: #f2f2f2; margin-bottom: 20px; }
-        th { border-bottom: 2px solid #4a2525; padding: 15px; color: #e8dccc; text-transform: uppercase; font-size: 14px; }
-        td { padding: 15px; border-bottom: 1px solid #3b0000; }
+        /* GRID DE TARJETAS ORIGINAL */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; padding: 30px; }
         
-        .total-seccion { text-align: right; font-size: 24px; color: #e8dccc; margin-top: 20px; padding: 10px; }
-        
-        /* BOTONES */
-        .btn { background: #3b0000; color: white; padding: 12px 28px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; font-size: 18px; transition: 0.3s; display: inline-block; }
-        .btn:hover { background: #5a0000; transform: translateY(-2px); }
-        .btn-outline { background: transparent; border: 2px solid #3b0000; margin-top: 20px; }
+        .menu-card { 
+            background: rgba(20, 20, 20, 0.8); 
+            border: 1px solid #4a2525; 
+            padding: 25px; 
+            border-radius: 12px; 
+            text-align: center; 
+            color: #fff; 
+            transition: 0.3s; 
+        }
+        .menu-card:hover { transform: scale(1.03); background: rgba(40, 40, 40, 0.9); border-color: #ff9494; }
+        .menu-card h2 { color: #e8dccc; font-size: 22px; margin-bottom: 10px; }
+        .menu-card p { color: #d1b7a3; font-size: 15px; }
+        .menu-card strong { display: block; margin: 15px 0; font-size: 20px; color: #f2f2f2; }
+
+        .btn { background: #3b0000; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; border: 1px solid #3b0000; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn:hover { background: #5a0000; }
+        .btn-outline { background: transparent; border: 2px solid #3b0000; }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="nav-left">
-        <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-    </div>
-    <div class="nav-right">
+    <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
+    <div class="nav-right" id="nav-links">
         <a href="index.html">Inicio</a>
-        <a href="menu.html">Menú</a>
-        <a href="dashboard.html">Mi Cuenta</a>
+        <a href="dashboard.html">Mi cuenta</a>
+        <a href="mi_pedido.html" style="color: #ff9494;">Mi Pedido</a>
     </div>
 </nav>
 
-<div class="content">
-    <h1 class="titulo">Resumen de tu Pedido</h1>
+<main class="content">
+    <h1 class="titulo">Nuestro Menú</h1>
 
-    <div id="contenedor-pedido" class="tabla-container">
-        <table id="tabla-pedido">
-            <thead>
-                <tr>
-                    <th>Platillo</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody id="cuerpo-tabla">
-                </tbody>
-        </table>
-
-        <div class="total-seccion">
-            <strong>Total: $<span id="total-monto">0.00</span></strong>
+    <h2 class="categoria-titulo">Platillos Principales</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <h2>Tacos al Pastor</h2>
+            <p>Carne marinada artesanalmente con piña, cilantro y cebolla.</p>
+            <strong>$150.00</strong>
+            <button class="btn btn-outline" onclick="agregarAlPedido('Tacos al Pastor', 150)">Agregar al pedido</button>
         </div>
-
-        <button onclick="confirmarPedido()" class="btn">Confirmar Pedido</button>
+        
+        <div class="menu-card">
+            <h2>Enchiladas Potosinas</h2>
+            <p>Rellenas de queso y chile serrano, servidas con crema y aguacate.</p>
+            <strong>$120.00</strong>
+            <button class="btn btn-outline" onclick="agregarAlPedido('Enchiladas Potosinas', 120)">Agregar al pedido</button>
+        </div>
     </div>
 
-    <div id="pedido-vacio" style="display:none;">
-        <p style="font-size: 20px; color: #d1b7a3;">No hay platillos en tu pedido todavía.</p>
-        <a href="menu.html" class="btn btn-outline">Ir al Menú</a>
+    <h2 class="categoria-titulo">Bebidas</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <h2>Agua de Horchata</h2>
+            <p>Fresca agua artesanal de arroz con un toque de canela.</p>
+            <strong>$45.00</strong>
+            <button class="btn btn-outline" onclick="agregarAlPedido('Agua de Horchata', 45)">Agregar al pedido</button>
+        </div>
     </div>
-</div>
+</main>
 
 <script>
-    function renderizarPedido() {
-        // Obtenemos los datos que guardamos en menu.html
-        const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
-        const cuerpo = document.getElementById('cuerpo-tabla');
-        const totalSpan = document.getElementById('total-monto');
-        const contenedor = document.getElementById('contenedor-pedido');
-        const vacio = document.getElementById('pedido-vacio');
-
-        if (pedido.length === 0) {
-            contenedor.style.display = 'none';
-            vacio.style.display = 'block';
-            return;
-        }
-
-        let total = 0;
-        cuerpo.innerHTML = "";
-
-        pedido.forEach(item => {
-            const subtotal = item.precio * item.cantidad;
-            total += subtotal;
-            cuerpo.innerHTML += `
-                <tr>
-                    <td>${item.nombre}</td>
-                    <td>$${item.precio.toFixed(2)}</td>
-                    <td>${item.cantidad}</td>
-                    <td>$${subtotal.toFixed(2)}</td>
-                </tr>
-            `;
-        });
-
-        totalSpan.innerText = total.toFixed(2);
+    function agregarAlPedido(nombre, precio) {
+        let pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+        pedido.push({ nombre: nombre, precio: precio, cantidad: 1 });
+        localStorage.setItem('pedido', JSON.stringify(pedido));
+        alert(nombre + " agregado al pedido.");
     }
-
-    function confirmarPedido() {
-        alert("¡Pedido confirmado con éxito! (Simulación de envío a base de datos)");
-        localStorage.removeItem('pedido'); // Limpiamos el carrito
-        window.location.href = 'menu.html';
-    }
-
-    // Ejecutar al cargar
-    document.addEventListener('DOMContentLoaded', renderizarPedido);
 </script>
 
 </body>
 </html>
+
 
