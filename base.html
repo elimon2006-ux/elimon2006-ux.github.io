@@ -2,55 +2,26 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Restaurante - Cascarón Estático</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style.css">
+    <style>
+        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; padding: 0; text-align: center; }
+        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
+        .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; font-size: 18px; transition: 0.3s; }
+        .nav-right a:hover { color: #ff9494; }
+        .content { padding: 20px; }
+        .card { background: #2a2a2a; width: 90%; max-width: 500px; margin: 40px auto; padding: 25px; border-radius: 12px; box-shadow: 0 0 15px rgba(255,0,0,0.15); border: 1px solid #4a2525; }
+        .btn { background: #3b0000; color: white; padding: 12px 28px; border-radius: 10px; text-decoration: none; display: inline-block; margin-top: 10px; border: none; cursor: pointer; }
+        .btn:hover { background: #5a0000; }
+    </style>
 </head>
 <body>
-
-<nav class="navbar">
-    <div class="nav-left">
+    <nav class="navbar">
         <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-    </div>
-    <div class="nav-right" id="nav-links">
-        </div>
-</nav>
-
-<main class="content">
-    <div id="flash-container"></div>
-    </main>
-
-<script>
-    function actualizarNavbar() {
-        const user = JSON.parse(localStorage.getItem('user'));
-        const navLinks = document.getElementById('nav-links');
-        const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
-        
-        if (user) {
-            navLinks.innerHTML = `
-                <a href="index.html">Inicio</a>
-                <a href="menu.html">Menú</a>
-                <a href="dashboard.html">Mi cuenta</a>
-                <a href="mi_pedido.html">Mi Pedido (${pedido.length})</a>
-                <span style="color: #e8dccc; font-weight: bold; margin-left: 10px;">${user.nombre}</span>
-                <a href="#" onclick="logout()" style="color: #ff9494; margin-left: 10px;">Salir</a>
-            `;
-        } else {
-            navLinks.innerHTML = `
-                <a href="index.html">Inicio</a>
-                <a href="login.html">Iniciar sesión</a>
-                <a href="register.html">Registrarse</a>
-            `;
-        }
-    }
-
-    function logout() {
-        localStorage.removeItem('user');
-        localStorage.removeItem('pedido');
-        window.location.href = 'index.html';
-    }
-
-    document.addEventListener('DOMContentLoaded', actualizarNavbar);
-</script>
+        <div class="nav-right" id="nav-links">
+            </div>
+    </nav>
+    <main class="content" id="main-content">
+        </main>
 </body>
 </html>
