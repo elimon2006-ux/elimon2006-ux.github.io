@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Mi Restaurante</title>
+    <title>Iniciar Sesión</title>
     <style>
-        /* Estilos basados en la interfaz de la imagen */
         body {
-            background-color: #1a1a1a; /* Fondo oscuro */
+            background-color: #1a1a1a;
             color: white;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             height: 100vh;
         }
 
-        /* Barra de navegación superior */
         .navbar {
             background-color: #110000;
             padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #333;
+            border-bottom: 2px solid #2c0000;
         }
 
-        .nav-logo {
-            color: #f1c40f;
-            text-decoration: underline;
+        .logo {
+            color: #eecfa1; /* Color dorado suave */
             font-size: 24px;
             font-weight: bold;
+            text-decoration: underline;
+            text-decoration-color: white;
+            text-decoration-thickness: 1px;
         }
 
         .nav-links a {
@@ -40,25 +40,24 @@
             font-size: 16px;
         }
 
-        /* Contenedor principal del formulario */
-        .login-container {
+        .container {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             padding-top: 50px;
         }
 
-        h2 {
-            font-weight: normal;
+        h1 {
+            font-size: 24px;
             margin-bottom: 30px;
+            font-weight: normal;
         }
 
-        .form-group {
-            width: 300px;
+        .input-group {
             margin-bottom: 20px;
             text-align: center;
+            width: 300px;
         }
 
         label {
@@ -67,59 +66,64 @@
             font-size: 14px;
         }
 
-        /* Campos de entrada */
         input {
             width: 100%;
             padding: 10px;
-            background-color: #2a2a2a;
+            background-color: #262626;
             border: 1px solid #444;
-            color: white;
             border-radius: 5px;
-            box-sizing: border-box;
+            color: white;
+            outline: none;
         }
 
-        /* Botón Entrar con funcionalidad de redirección */
+        /* ESTE ES EL BOTÓN QUE NECESITAS */
         .btn-entrar {
-            display: inline-block;
-            background-color: #4a0000;
-            color: white;
-            padding: 10px 30px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
             margin-top: 10px;
+            background-color: #4a0000; /* Rojo oscuro */
+            color: white;
+            border: none;
+            padding: 10px 40px;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
+            text-decoration: none; /* Vital para que parezca botón */
+            display: inline-block;
+        }
+        
+        .btn-entrar:hover {
+            background-color: #600000;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-logo">🍽️ Mi Restaurante</a>
+    <div class="navbar">
+        <div class="logo">🍽️ Mi Restaurante</div>
         <div class="nav-links">
             <a href="index.html">Inicio</a>
             <a href="login.html">Iniciar sesión</a>
             <a href="register.html">Registrarse</a>
         </div>
-    </nav>
+    </div>
 
-    <main class="login-container">
-        <h2>Iniciar Sesión</h2>
-        
-        <div class="form-group">
+    <div class="container">
+        <h1>Iniciar Sesión</h1>
+
+        <div class="input-group">
             <label>Correo</label>
-            <input type="email">
+            <input type="text">
         </div>
 
-        <div class="form-group">
+        <div class="input-group">
             <label>Contraseña</label>
             <input type="password">
         </div>
 
         <a href="index.html" class="btn-entrar">Entrar</a>
-    </main>
+
+    </div>
 
 </body>
 </html>
+
 
