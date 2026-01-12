@@ -2,35 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Iniciar Sesión</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Mi Restaurante</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-left">
-            <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-        </div>
-        <div class="nav-right">
-            <a href="index.html">Inicio</a>
-            <a href="login.html">Iniciar sesión</a>
-            <a href="register.html">Registrarse</a>
-        </div>
-    </nav>
 
-    <main class="content">
-        <div class="form-card">
-            <h2>Iniciar Sesión</h2>
-            <form onsubmit="event.preventDefault(); window.location.href='index.html';">
-                <label>Correo</label>
-                <input type="email" name="correo" required>
-                <label>Contraseña</label>
-                <input type="password" name="contrasena" required>
-                <button type="submit" class="btn">Entrar</button>
-            </form>
-        </div>
-    </main>
+<nav class="navbar">
+    <div class="nav-left">
+        <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
+    </div>
+    <div class="nav-right">
+        <a href="login.html">Iniciar sesión</a>
+        <a href="register.html">Registrarse</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1 class="hero-title">Bienvenido a Mi Restaurante</h1>
+    <p class="hero-subtitle">Elegancia, tradición y sabor auténtico</p>
+
+    <div class="hero-buttons">
+        <a href="login.html" class="btn">Iniciar Sesión</a>
+        <a href="register.html" class="btn btn-outline">Registrarse</a>
+    </div>
+</div>
+
 </body>
 </html>
-
-
