@@ -2,123 +2,119 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Menú Especialidades - Mi Restaurante</title>
+    <title>Mi Pedido - Mi Restaurante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* ESTILOS INTEGRADOS - NO DEPENDEN DE ARCHIVOS EXTERNOS */
-        body { 
-            background: #1b1b1b !important; 
-            color: #f2f2f2 !important; 
-            font-family: "Georgia", serif; 
-            margin: 0; 
-            padding: 0; 
-        }
-        .navbar { 
-            background: #240000; 
-            padding: 15px 30px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 2px solid #4d0000; 
-        }
-        .nav-title { font-size: 24px; color: #e8dccc; text-decoration: none; font-weight: bold; }
-        .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; }
-
-        .titulo-pagina { color: #e0d6c2; font-size: 40px; margin: 40px 0; }
+        /* ESTILOS INTEGRADOS PARA GARANTIZAR EL DISEÑO OSCURO */
+        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; padding: 0; text-align: center; }
+        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; }
+        .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
+        .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; font-size: 18px; }
         
-        .categoria-header {
-            color: #d1b7a3;
-            border-bottom: 2px solid #3b0000;
-            display: inline-block;
-            padding: 5px 20px;
-            margin: 20px 0;
-            font-size: 24px;
-        }
+        .content { padding: 40px 20px; }
+        .titulo { font-size: 48px; color: #e0d6c2; margin-bottom: 30px; }
 
-        /* CONTENEDOR DE TARJETAS */
-        .menu-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        /* DISEÑO DE LA TARJETA (CASCARÓN) */
-        .menu-card {
-            background: #2a2a2a;
-            border: 1px solid #4a2525;
-            width: 280px;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: 0.3s;
-        }
-        .menu-card:hover { transform: translateY(-5px); border-color: #ff9494; }
-        .menu-card h2 { color: #e8dccc; font-size: 20px; margin: 10px 0; }
-        .menu-card p { color: #aaa; font-size: 14px; min-height: 40px; }
-        .menu-card .precio { color: #fff; font-weight: bold; font-size: 18px; display: block; margin: 15px 0; }
-
-        .btn-agregar {
-            background: #3b0000;
-            color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .btn-agregar:hover { background: #5a0000; }
+        /* TABLA DE PEDIDOS */
+        .tabla-container { background: #2a2a2a; border-radius: 12px; padding: 20px; border: 1px solid #4a2525; max-width: 900px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        table { width: 100%; border-collapse: collapse; color: #f2f2f2; margin-bottom: 20px; }
+        th { border-bottom: 2px solid #4a2525; padding: 15px; color: #e8dccc; text-transform: uppercase; font-size: 14px; }
+        td { padding: 15px; border-bottom: 1px solid #3b0000; }
+        
+        .total-seccion { text-align: right; font-size: 24px; color: #e8dccc; margin-top: 20px; padding: 10px; }
+        
+        /* BOTONES */
+        .btn { background: #3b0000; color: white; padding: 12px 28px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; font-size: 18px; transition: 0.3s; display: inline-block; }
+        .btn:hover { background: #5a0000; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 2px solid #3b0000; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
+    <div class="nav-left">
+        <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
+    </div>
     <div class="nav-right">
         <a href="index.html">Inicio</a>
+        <a href="menu.html">Menú</a>
         <a href="dashboard.html">Mi Cuenta</a>
-        <a href="mi_pedido.html">Mi Pedido</a>
     </div>
 </nav>
 
-<h1 class="titulo-pagina">Nuestras Especialidades</h1>
+<div class="content">
+    <h1 class="titulo">Resumen de tu Pedido</h1>
 
-<div class="categoria-header">TACOS</div>
-<div class="menu-grid">
-    <div class="menu-card">
-        <h2>Tacos al Pastor</h2>
-        <p>Tradicionales con piña y salsa secreta.</p>
-        <span class="precio">$45.00</span>
-        <button class="btn-agregar" onclick="simularAgregar('Tacos al Pastor', 45)">Agregar al Pedido</button>
-    </div>
-    <div class="menu-card">
-        <h2>Tacos de Bistec</h2>
-        <p>Carne asada al momento con cebollitas.</p>
-        <span class="precio">$50.00</span>
-        <button class="btn-agregar" onclick="simularAgregar('Tacos de Bistec', 50)">Agregar al Pedido</button>
-    </div>
-</div>
+    <div id="contenedor-pedido" class="tabla-container">
+        <table id="tabla-pedido">
+            <thead>
+                <tr>
+                    <th>Platillo</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-tabla">
+                </tbody>
+        </table>
 
-<div class="categoria-header">BEBIDAS</div>
-<div class="menu-grid">
-    <div class="menu-card">
-        <h2>Agua de Horchata</h2>
-        <p>Receta clásica con canela de Ceilán.</p>
-        <span class="precio">$25.00</span>
-        <button class="btn-agregar" onclick="simularAgregar('Agua de Horchata', 25)">Agregar al Pedido</button>
+        <div class="total-seccion">
+            <strong>Total: $<span id="total-monto">0.00</span></strong>
+        </div>
+
+        <button onclick="confirmarPedido()" class="btn">Confirmar Pedido</button>
+    </div>
+
+    <div id="pedido-vacio" style="display:none;">
+        <p style="font-size: 20px; color: #d1b7a3;">No hay platillos en tu pedido todavía.</p>
+        <a href="menu.html" class="btn btn-outline">Ir al Menú</a>
     </div>
 </div>
 
 <script>
-    function simularAgregar(nombre, precio) {
-        let pedido = JSON.parse(localStorage.getItem('pedido')) || [];
-        pedido.push({ nombre, precio, cantidad: 1 });
-        localStorage.setItem('pedido', JSON.stringify(pedido));
-        alert('Se agregó ' + nombre + ' a tu pedido (Simulación)');
+    function renderizarPedido() {
+        // Obtenemos los datos que guardamos en menu.html
+        const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+        const cuerpo = document.getElementById('cuerpo-tabla');
+        const totalSpan = document.getElementById('total-monto');
+        const contenedor = document.getElementById('contenedor-pedido');
+        const vacio = document.getElementById('pedido-vacio');
+
+        if (pedido.length === 0) {
+            contenedor.style.display = 'none';
+            vacio.style.display = 'block';
+            return;
+        }
+
+        let total = 0;
+        cuerpo.innerHTML = "";
+
+        pedido.forEach(item => {
+            const subtotal = item.precio * item.cantidad;
+            total += subtotal;
+            cuerpo.innerHTML += `
+                <tr>
+                    <td>${item.nombre}</td>
+                    <td>$${item.precio.toFixed(2)}</td>
+                    <td>${item.cantidad}</td>
+                    <td>$${subtotal.toFixed(2)}</td>
+                </tr>
+            `;
+        });
+
+        totalSpan.innerText = total.toFixed(2);
     }
+
+    function confirmarPedido() {
+        alert("¡Pedido confirmado con éxito! (Simulación de envío a base de datos)");
+        localStorage.removeItem('pedido'); // Limpiamos el carrito
+        window.location.href = 'menu.html';
+    }
+
+    // Ejecutar al cargar
+    document.addEventListener('DOMContentLoaded', renderizarPedido);
 </script>
 
 </body>
 </html>
+
