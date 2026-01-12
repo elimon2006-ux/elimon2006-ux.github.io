@@ -2,33 +2,35 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurante - Inicio</title>
+    <title>Iniciar Sesión</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar">
-        <a class="nav-title" href="index.html">🍽️ GastroHub</a>
+        <div class="nav-left">
+            <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
+        </div>
         <div class="nav-right">
             <a href="index.html">Inicio</a>
-            <a href="login.html">Entrar</a>
-            <a href="register.html">Unirme</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="register.html">Registrarse</a>
         </div>
     </nav>
 
     <main class="content">
-        <div class="hero">
-            <h1 class="hero-title">Sabor que Inspira</h1>
-            <p class="hero-subtitle">La mejor experiencia gastronómica desde la comodidad de tu pantalla.</p>
-            <div class="hero-buttons">
-                <a href="login.html" class="btn">Explorar Menú</a>
-                <a href="register.html" class="btn btn-outline">Crear Cuenta</a>
-            </div>
+        <div class="form-card">
+            <h2>Iniciar Sesión</h2>
+            <form onsubmit="event.preventDefault(); window.location.href='index.html';">
+                <label>Correo</label>
+                <input type="email" name="correo" required>
+                <label>Contraseña</label>
+                <input type="password" name="contrasena" required>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
         </div>
     </main>
 </body>
 </html>
-    </main>
-</body>
-</html>
+
 
