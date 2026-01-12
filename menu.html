@@ -5,89 +5,103 @@
     <title>Menú - Mi Restaurante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* RESTAURACIÓN DE ESTILOS DEL style.css ORIGINAL */
-        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; padding: 0; text-align: center; }
-        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        /* Estilos originales restaurados */
+        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; text-align: center; }
+        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; }
         .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
         .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; font-size: 18px; }
-        
         .titulo { font-size: 45px; color: #e0d6c2; margin-top: 30px; }
-        .categoria-titulo { color: #e8dccc; border-bottom: 2px solid #4a2525; display: inline-block; padding: 5px 30px; margin-top: 40px; font-size: 24px; }
-
-        /* GRID DE TARJETAS ORIGINAL */
+        .categoria-titulo { color: #e8dccc; border-bottom: 2px solid #4a2525; display: inline-block; padding: 5px 30px; margin-top: 40px; font-size: 24px; text-transform: uppercase; }
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; padding: 30px; }
-        
-        .menu-card { 
-            background: rgba(20, 20, 20, 0.8); 
-            border: 1px solid #4a2525; 
-            padding: 25px; 
-            border-radius: 12px; 
-            text-align: center; 
-            color: #fff; 
-            transition: 0.3s; 
-        }
+        .menu-card { background: rgba(20, 20, 20, 0.8); border: 1px solid #4a2525; padding: 25px; border-radius: 12px; transition: 0.3s; }
         .menu-card:hover { transform: scale(1.03); background: rgba(40, 40, 40, 0.9); border-color: #ff9494; }
         .menu-card h2 { color: #e8dccc; font-size: 22px; margin-bottom: 10px; }
-        .menu-card p { color: #d1b7a3; font-size: 15px; }
+        .menu-card p { color: #d1b7a3; font-size: 15px; min-height: 45px; }
         .menu-card strong { display: block; margin: 15px 0; font-size: 20px; color: #f2f2f2; }
-
-        .btn { background: #3b0000; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; border: 1px solid #3b0000; cursor: pointer; transition: 0.3s; width: 100%; }
-        .btn:hover { background: #5a0000; }
-        .btn-outline { background: transparent; border: 2px solid #3b0000; }
+        .btn { background: transparent; color: white; padding: 10px 20px; border-radius: 10px; border: 2px solid #3b0000; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn:hover { background: #3b0000; }
+        .cart-btn { background: #3b0000; border: none; padding: 15px 30px; font-size: 18px; margin-top: 30px; }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
     <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-    <div class="nav-right" id="nav-links">
+    <div class="nav-right">
         <a href="index.html">Inicio</a>
         <a href="dashboard.html">Mi cuenta</a>
-        <a href="mi_pedido.html" style="color: #ff9494;">Mi Pedido</a>
+        <a href="mi_pedido.html" style="color: #ff9494;">Mi Pedido (<span id="count">0</span>)</a>
     </div>
 </nav>
 
-<main class="content">
-    <h1 class="titulo">Nuestro Menú</h1>
+<h1 class="titulo">Menú Completo</h1>
 
-    <h2 class="categoria-titulo">Platillos Principales</h2>
-    <div class="menu-grid">
-        <div class="menu-card">
-            <h2>Tacos al Pastor</h2>
-            <p>Carne marinada artesanalmente con piña, cilantro y cebolla.</p>
-            <strong>$150.00</strong>
-            <button class="btn btn-outline" onclick="agregarAlPedido('Tacos al Pastor', 150)">Agregar al pedido</button>
-        </div>
-        
-        <div class="menu-card">
-            <h2>Enchiladas Potosinas</h2>
-            <p>Rellenas de queso y chile serrano, servidas con crema y aguacate.</p>
-            <strong>$120.00</strong>
-            <button class="btn btn-outline" onclick="agregarAlPedido('Enchiladas Potosinas', 120)">Agregar al pedido</button>
-        </div>
+<h2 class="categoria-titulo">Platillos Principales</h2>
+<div class="menu-grid">
+    <div class="menu-card">
+        <h2>Tacos al Pastor</h2>
+        <p>Carne marinada con piña, cilantro y cebolla.</p>
+        <strong>$150.00</strong>
+        <button class="btn" onclick="agregar('Tacos al Pastor', 150)">Agregar al pedido</button>
     </div>
+    <div class="menu-card">
+        <h2>Enchiladas Potosinas</h2>
+        <p>Rellenas de queso y chile serrano con crema.</p>
+        <strong>$120.00</strong>
+        <button class="btn" onclick="agregar('Enchiladas Potosinas', 120)">Agregar al pedido</button>
+    </div>
+    <div class="menu-card">
+        <h2>Corte de Res</h2>
+        <p>Rib-eye a la leña con guarnición de vegetales.</p>
+        <strong>$350.00</strong>
+        <button class="btn" onclick="agregar('Corte de Res', 350)">Agregar al pedido</button>
+    </div>
+</div>
 
-    <h2 class="categoria-titulo">Bebidas</h2>
-    <div class="menu-grid">
-        <div class="menu-card">
-            <h2>Agua de Horchata</h2>
-            <p>Fresca agua artesanal de arroz con un toque de canela.</p>
-            <strong>$45.00</strong>
-            <button class="btn btn-outline" onclick="agregarAlPedido('Agua de Horchata', 45)">Agregar al pedido</button>
-        </div>
+<h2 class="categoria-titulo">Bebidas</h2>
+<div class="menu-grid">
+    <div class="menu-card">
+        <h2>Agua de Horchata</h2>
+        <p>Tradicional de arroz con un toque de canela.</p>
+        <strong>$45.00</strong>
+        <button class="btn" onclick="agregar('Agua de Horchata', 45)">Agregar al pedido</button>
     </div>
-</main>
+    <div class="menu-card">
+        <h2>Refresco</h2>
+        <p>Variedad de sabores en presentación de 355ml.</p>
+        <strong>$35.00</strong>
+        <button class="btn" onclick="agregar('Refresco', 35)">Agregar al pedido</button>
+    </div>
+    <div class="menu-card">
+        <h2>Cerveza Artesanal</h2>
+        <p>Porter o IPA de la casa.</p>
+        <strong>$85.00</strong>
+        <button class="btn" onclick="agregar('Cerveza Artesanal', 85)">Agregar al pedido</button>
+    </div>
+</div>
+
+<div style="padding-bottom: 50px;">
+    <a href="mi_pedido.html" class="btn cart-btn">Ver Mi Pedido</a>
+</div>
 
 <script>
-    function agregarAlPedido(nombre, precio) {
+    function agregar(nombre, precio) {
         let pedido = JSON.parse(localStorage.getItem('pedido')) || [];
-        pedido.push({ nombre: nombre, precio: precio, cantidad: 1 });
+        pedido.push({ nombre, precio, cantidad: 1 });
         localStorage.setItem('pedido', JSON.stringify(pedido));
-        alert(nombre + " agregado al pedido.");
+        actualizarContador();
     }
+
+    function actualizarContador() {
+        const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
+        document.getElementById('count').innerText = pedido.length;
+    }
+    
+    document.addEventListener('DOMContentLoaded', actualizarContador);
 </script>
 
 </body>
 </html>
+
 
 
