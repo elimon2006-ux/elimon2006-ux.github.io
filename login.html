@@ -6,32 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-left">
-            <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-        </div>
-        <div class="nav-right">
-            <a href="index.html">Inicio</a>
-            <a href="login.html">Iniciar sesión</a>
-            <a href="register.html">Registrarse</a>
+<body style="background-color: #1a1a1a; color: white; margin: 0; font-family: sans-serif;">
+
+    <nav style="background-color: #110000; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center;">
+        <a href="index.html" style="color: #f1c40f; text-decoration: underline; font-size: 24px; font-weight: bold;">🍽️ Mi Restaurante</a>
+        <div style="display: flex; gap: 20px;">
+            <a href="index.html" style="color: white; text-decoration: none;">Inicio</a>
+            <a href="login.html" style="color: white; text-decoration: none;">Iniciar sesión</a>
+            <a href="register.html" style="color: white; text-decoration: none;">Registrarse</a>
         </div>
     </nav>
 
-    <main class="content">
-        <div class="form-card">
-            <h2>Iniciar Sesión</h2>
-            <form onsubmit="event.preventDefault(); window.location.href='index.html';">
-                <label>Correo</label>
-                <input type="email" name="correo" required placeholder="email@ejemplo.com">
-                <label>Contraseña</label>
-                <input type="password" name="contrasena" required placeholder="••••••••">
-                <button type="submit" class="btn">Entrar</button>
-            </form>
+    <main style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh;">
+        <h2 style="margin-bottom: 20px;">Iniciar Sesión</h2>
+        
+        <div style="width: 300px; text-align: center;">
+            <label style="display: block; margin-bottom: 5px;">Correo</label>
+            <input type="email" style="width: 100%; padding: 10px; background: #2a2a2a; border: 1px solid #444; color: white; border-radius: 5px; margin-bottom: 15px;">
+            
+            <label style="display: block; margin-bottom: 5px;">Contraseña</label>
+            <input type="password" style="width: 100%; padding: 10px; background: #2a2a2a; border: 1px solid #444; color: white; border-radius: 5px; margin-bottom: 20px;">
+            
+            <button type="button" 
+                    onclick="window.location.href='menu.html'" 
+                    style="background-color: #4a0000; color: white; padding: 10px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                Entrar
+            </button>
         </div>
     </main>
+
 </body>
 </html>
+
 
 
 
