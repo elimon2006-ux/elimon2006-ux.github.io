@@ -2,50 +2,53 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Menú - Mi Restaurante</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-left">
-            <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-        </div>
-        <div class="nav-right">
-            <a href="index.html">Inicio</a>
-            <a href="menu.html">Menú</a>
-            <a href="dashboard.html">Mi cuenta</a>
-            <a href="index.html" class="logout">Salir</a>
-        </div>
-    </nav>
 
-    <main class="content">
-        <h1 class="titulo">Menú</h1>
+<nav class="navbar">
+    <div class="nav-left"><a class="nav-title" href="index.html">🍽️ Mi Restaurante</a></div>
+    <div class="nav-right">
+        <a href="dashboard.html">Mi cuenta</a>
+        <a href="mi_pedido.html">🛒 Ver Carrito</a>
+    </div>
+</nav>
 
-        <h2 class="categoria-titulo">Platillos Principales</h2>
-        <div class="menu-grid">
-            <div class="menu-card">
-                <h2>Corte Rib-Eye</h2>
-                <p>350g de calidad Prime asado al carbón.</p>
-                <p><strong>$450.00</strong></p>
-                <button type="button" class="btn btn-outline" onclick="alert('Agregado al pedido');">
-                    Agregar al pedido
-                </button>
-            </div>
-            <div class="menu-card">
-                <h2>Pasta Alfredo</h2>
-                <p>Pasta fresca con crema de parmesano y pollo.</p>
-                <p><strong>$190.00</strong></p>
-                <button type="button" class="btn btn-outline" onclick="alert('Agregado al pedido');">
-                    Agregar al pedido
-                </button>
-            </div>
-        </div>
+<h1 class="titulo">Nuestro Menú</h1>
 
-        <div style="margin-top: 40px; text-align: center;">
-            <a href="mi_pedido.html" class="btn">Ver Mi Pedido (2 items)</a>
-        </div>
-    </main>
+<h2 class="categoria-titulo" style="border-bottom: 1px solid #555; width:80%; margin: 20px auto;">TACOS</h2>
+<div class="menu-grid">
+    <div class="menu-card">
+        <h2>Tacos al Pastor</h2>
+        <p>Carne de cerdo adobada con piña y cilantro.</p>
+        <p><strong>$15.00</strong></p>
+        <a href="mi_pedido.html" class="btn btn-outline">Agregar</a>
+    </div>
+    <div class="menu-card">
+        <h2>Tacos de Asada</h2>
+        <p>Bistec de res con guacamole.</p>
+        <p><strong>$20.00</strong></p>
+        <a href="mi_pedido.html" class="btn btn-outline">Agregar</a>
+    </div>
+</div>
+
+<h2 class="categoria-titulo" style="border-bottom: 1px solid #555; width:80%; margin: 20px auto;">BEBIDAS</h2>
+<div class="menu-grid">
+    <div class="menu-card">
+        <h2>Refresco</h2>
+        <p>Coca-Cola, Sprite o Fanta (600ml).</p>
+        <p><strong>$25.00</strong></p>
+        <a href="mi_pedido.html" class="btn btn-outline">Agregar</a>
+    </div>
+    <div class="menu-card">
+        <h2>Agua Fresca</h2>
+        <p>Horchata o Jamaica (1L).</p>
+        <p><strong>$30.00</strong></p>
+        <a href="mi_pedido.html" class="btn btn-outline">Agregar</a>
+    </div>
+</div>
+
 </body>
 </html>
 
