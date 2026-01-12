@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Iniciar Sesión</title>
+    <title>Iniciar Sesión - Mi Restaurante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,17 +21,18 @@
     <main class="content">
         <div class="form-card">
             <h2>Iniciar Sesión</h2>
-            <form>
+            <form onsubmit="event.preventDefault(); window.location.href='index.html';">
                 <label>Correo</label>
-                <input type="email" name="correo" required>
+                <input type="email" name="correo" required placeholder="email@ejemplo.com">
                 <label>Contraseña</label>
-                <input type="password" name="contrasena" required>
+                <input type="password" name="contrasena" required placeholder="••••••••">
                 <button type="submit" class="btn">Entrar</button>
             </form>
         </div>
     </main>
 </body>
 </html>
+
 
 
 
