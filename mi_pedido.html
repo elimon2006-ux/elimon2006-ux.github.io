@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Pedido</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left"><a class="nav-title" href="index.html">🍽️ Mi Restaurante</a></div>
+    <div class="nav-right">
+        <a href="menu.html">Seguir pidiendo</a>
+        <a href="dashboard.html">Mi cuenta</a>
+    </div>
+</nav>
+
+<h1 class="titulo">Tu Pedido</h1>
+
+<div id="mensaje-exito" class="flash-container" style="display:none; background:#2a4a2a; color:#c8ffc8; padding:15px; margin:20px auto; border-radius:8px; width:50%;">
+    ¡Pedido confirmado exitosamente! La cocina está preparando tus alimentos.
+</div>
+
+<table id="tabla-pedido">
+    <thead>
+        <tr>
+            <th>Platillo</th>
+            <th>Precio Unitario</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="item-fila">
+            <td>Tacos al Pastor</td>
+            <td class="precio" data-valor="15">$15.00</td>
+            <td>
+                <span class="cantidad">2</span>
+            </td>
+            <td class="subtotal">$30.00</td>
+            <td>
+                <button class="btn btn-outline" onclick="cambiarCantidad(this, 1)">+</button>
+                <button class="btn btn-outline" onclick="cambiarCantidad(this, -1)">-</button>
+                <button class="btn btn-outline" style="border-color:#800000; color:#ffbaba;" onclick="eliminarFila(this)">X</button>
+            </td>
+        </tr>
+
+        <tr class="item-fila">
+            <td>Agua de Horchata</td>
+            <td class="precio" data-valor="30">$30.00</td>
+            <td>
+                <span class="cantidad">1</span>
+            </td>
+            <td class="subtotal">$30.00</td>
+            <td>
+                <button class="btn btn-outline" onclick="cambiarCantidad(this, 1)">+</button>
+                <button class="btn btn-outline" onclick="cambiarCantidad(this, -1)">-</button>
+                <button class="btn btn-outline" style="border-color:#800000; color:#ffbaba;" onclick="eliminarFila(this)">X</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 style="margin-top:20px;">Total: <span id="gran-total">$60.00</span></h2>
+
+<button onclick="confirmarPedido()" class="btn" style="margin-top: 20px; font-size:20px;">Confirmar Pedido</button>
+
+
+<script>
+    function actualizarTotal() {
+        let total = 0;
+        const filas = document.querySelectorAll('.item-fila');
+        
+        filas.forEach(fila => {
+            const precio = parseFloat(fila.querySelector('.precio').getAttribute('data-valor'));
+            const cantidad = parseInt(fila.querySelector('.cantidad').innerText);
+            const subtotal = precio * cantidad;
+            
+            // Actualizar subtotal visual
+            fila.querySelector('.subtotal').innerText = '$' + subtotal.toFixed(2);
+            total += subtotal;
+        });
+
+        // Actualizar Gran Total
+        document.getElementById('gran-total').innerText = '$' + total.toFixed(2);
+    }
+
+    function cambiarCantidad(btn, cambio) {
+        const fila = btn.closest('tr');
+        const spanCantidad = fila.querySelector('.cantidad');
+        let cantidad = parseInt(spanCantidad.innerText);
+        
+        cantidad += cambio;
+        if (cantidad < 1) cantidad = 1; // No bajar de 1
+        
+        spanCantidad.innerText = cantidad;
+        actualizarTotal();
+    }
+
+    function eliminarFila(btn) {
+        if(confirm("¿Eliminar este platillo?")) {
+            btn.closest('tr').remove();
+            actualizarTotal();
+        }
+    }
+
+    function confirmarPedido() {
+        document.getElementById('tabla-pedido').style.display = 'none';
+        document.querySelector('h2').style.display = 'none'; // Ocultar total
+        document.querySelector('button[onclick="confirmarPedido()"]').style.display = 'none'; // Ocultar botón
+        
+        const mensaje = document.getElementById('mensaje-exito');
+        mensaje.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
