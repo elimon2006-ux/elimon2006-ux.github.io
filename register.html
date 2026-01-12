@@ -2,37 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registro - Mi Restaurante</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #1a1a1a; color: white; font-family: sans-serif;">
+<body>
 
-    <nav style="background-color: #110000; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center;">
-        <a href="index.html" style="color: #f1c40f; text-decoration: underline; font-size: 24px; font-weight: bold;">🍽️ Mi Restaurante</a>
-        <div style="display: flex; gap: 20px;">
-            <a href="index.html" style="color: white; text-decoration: none;">Inicio</a>
-            <a href="login.html" style="color: white; text-decoration: none;">Iniciar sesión</a>
-            <a href="register.html" style="color: white; text-decoration: none;">Registrarse</a>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="nav-left"><a class="nav-title" href="index.html">🍽️ Mi Restaurante</a></div>
+    <div class="nav-right">
+        <a href="login.html">Iniciar sesión</a>
+    </div>
+</nav>
 
-    <main style="display: flex; flex-direction: column; align-items: center; padding: 40px;">
-        <h2>Registro de Cliente</h2>
-        <div style="width: 400px; background: #222; padding: 20px; border-radius: 10px;">
-            <label>Nombre completo</label>
-            <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-            <label>Correo</label>
-            <input type="email" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-            <label>Contraseña</label>
-            <input type="password" style="width: 100%; padding: 8px; margin-bottom: 20px;">
-            
-            <button type="button" 
-                    onclick="alert('¡Cuenta creada!'); window.location.href='login.html'" 
-                    style="background-color: #4a0000; color: white; padding: 10px; width: 100%; border: none; border-radius: 5px; cursor: pointer;">
-                Registrarme
-            </button>
-        </div>
-    </main>
+<div class="form-card" style="margin-top: 20px;">
+    <h2>Registro de Cliente</h2>
+    
+    <input type="text" placeholder="Nombre completo">
+    <input type="email" placeholder="Correo electrónico">
+    <input type="text" placeholder="Teléfono">
+    <input type="password" placeholder="Contraseña">
+    
+    <h3>Dirección</h3>
+    <input type="text" placeholder="Calle y Número">
+    <input type="text" placeholder="Colonia">
+    <input type="text" placeholder="Ciudad">
+
+    <a href="login.html" class="btn" style="display:block; margin-top:20px;">Registrarme</a>
+</div>
+
 </body>
 </html>
+
