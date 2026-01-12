@@ -2,72 +2,36 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Iniciar Sesión - Mi Restaurante</title>
+    <title>Iniciar Sesión</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Estilos integrados para garantizar que el diseño NO falle */
-        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; padding: 0; text-align: center; }
-        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
-        .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
-        .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; font-size: 18px; }
-        .form-card { background: #2a2a2a; width: 340px; margin: 80px auto; padding: 30px; border-radius: 12px; box-shadow: 0 0 20px rgba(255,0,0,0.2); border: 1px solid #4a2525; }
-        h2 { color: #e0d6c2; font-size: 32px; margin-bottom: 20px; font-weight: normal; }
-        label { display: block; text-align: left; margin: 10px 0 5px 30px; color: #d1b7a3; }
-        input { display: block; margin: 10px auto; padding: 14px; width: 85%; background: #1b1b1b; border: 2px solid #3b0000; border-radius: 10px; color: #f2f2f2; font-size: 16px; }
-        .btn { background: #3b0000; color: white; padding: 12px 28px; border-radius: 10px; text-decoration: none; font-size: 18px; transition: 0.3s; border: none; cursor: pointer; width: 93%; margin-top: 10px; }
-        .btn:hover { background: #5a0000; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html">Inicio</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="register.html">Registrarse</a>
+        </div>
+    </nav>
 
-<nav class="navbar">
-    <div class="nav-left">
-        <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-    </div>
-    <div class="nav-right">
-        <a href="index.html">Inicio</a>
-        <a href="register.html">Registrarse</a>
-    </div>
-</nav>
-
-<div class="form-card">
-    <h2>Iniciar Sesión</h2>
-    <form id="form-simulacion">
-        <label>Correo</label>
-        <input type="email" id="correo-input" placeholder="ejemplo@correo.com" required>
-
-        <label>Contraseña</label>
-        <input type="password" placeholder="********" required>
-
-        <button type="submit" class="btn">Entrar</button>
-    </form>
-</div>
-
-<script>
-    // Esta función garantiza que el botón funcione sin servidor
-    document.getElementById('form-simulacion').onsubmit = function(e) {
-        e.preventDefault();
-
-        // Creamos un usuario ficticio basado en tus modelos reales
-        const user = {
-            nombre: "Profesor Evaluador",
-            correo: document.getElementById('correo-input').value,
-            telefono: "55-1234-5678",
-            calle: "Av. Universidad",
-            numero: "3000",
-            colonia: "Coyoacán",
-            ciudad: "Ciudad de México"
-        };
-
-        // Guardamos la sesión en el navegador
-        localStorage.setItem('user', JSON.stringify(user));
-
-        // Redirigimos al dashboard estático
-        window.location.href = 'dashboard.html';
-    };
-</script>
-
+    <main class="content">
+        <div class="form-card">
+            <h2>Iniciar Sesión</h2>
+            <form>
+                <label>Correo</label>
+                <input type="email" name="correo" required>
+                <label>Contraseña</label>
+                <input type="password" name="contrasena" required>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
+
 
 
