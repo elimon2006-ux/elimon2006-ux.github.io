@@ -2,101 +2,122 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Menú - Mi Restaurante</title>
+    <title>Menú Especialidades - Mi Restaurante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Estilos Base para consistencia */
-        body { background: #1b1b1b; color: #f2f2f2; font-family: "Georgia", serif; margin: 0; padding: 0; text-align: center; }
-        .navbar { background: #240000; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4d0000; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
-        .nav-title { font-size: 28px; color: #e8dccc; text-decoration: none; font-weight: bold; }
-        .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; font-size: 18px; }
-        
-        /* Títulos de Categoría */
-        .categoria-titulo { color: #e0d6c2; margin-top: 40px; font-size: 1.8rem; border-bottom: 2px solid #4a2525; display: inline-block; padding-bottom: 5px; }
+        /* ESTILOS INTEGRADOS - NO DEPENDEN DE ARCHIVOS EXTERNOS */
+        body { 
+            background: #1b1b1b !important; 
+            color: #f2f2f2 !important; 
+            font-family: "Georgia", serif; 
+            margin: 0; 
+            padding: 0; 
+        }
+        .navbar { 
+            background: #240000; 
+            padding: 15px 30px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 2px solid #4d0000; 
+        }
+        .nav-title { font-size: 24px; color: #e8dccc; text-decoration: none; font-weight: bold; }
+        .nav-right a { color: #f4e9da; text-decoration: none; margin-left: 20px; }
 
-        /* Grid de Menú */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 40px; }
+        .titulo-pagina { color: #e0d6c2; font-size: 40px; margin: 40px 0; }
         
-        /* Tarjetas de Platillos */
-        .menu-card { background: rgba(42, 42, 42, 0.9); border: 1px solid #4a2525; padding: 25px; border-radius: 12px; text-align: center; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .menu-card:hover { transform: scale(1.03); background: rgba(58, 58, 58, 0.9); border-color: #ff9494; }
-        .menu-card h2 { color: #e8dccc; margin: 0 0 10px 0; font-size: 1.5rem; }
-        .menu-card p { color: #d1b7a3; font-size: 0.95rem; line-height: 1.4; }
-        .menu-card .precio { color: #f2f2f2; font-weight: bold; font-size: 1.2rem; margin: 15px 0; display: block; }
+        .categoria-header {
+            color: #d1b7a3;
+            border-bottom: 2px solid #3b0000;
+            display: inline-block;
+            padding: 5px 20px;
+            margin: 20px 0;
+            font-size: 24px;
+        }
 
-        /* Botones */
-        .btn { background: #3b0000; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 1rem; transition: 0.3s; width: 100%; }
-        .btn:hover { background: #5a0000; }
-        .cart-count { background: #ff9494; color: #240000; border-radius: 50%; padding: 2px 8px; font-size: 0.8rem; font-weight: bold; margin-left: 5px; }
+        /* CONTENEDOR DE TARJETAS */
+        .menu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* DISEÑO DE LA TARJETA (CASCARÓN) */
+        .menu-card {
+            background: #2a2a2a;
+            border: 1px solid #4a2525;
+            width: 280px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-5px); border-color: #ff9494; }
+        .menu-card h2 { color: #e8dccc; font-size: 20px; margin: 10px 0; }
+        .menu-card p { color: #aaa; font-size: 14px; min-height: 40px; }
+        .menu-card .precio { color: #fff; font-weight: bold; font-size: 18px; display: block; margin: 15px 0; }
+
+        .btn-agregar {
+            background: #3b0000;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-agregar:hover { background: #5a0000; }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="nav-left">
-        <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
-    </div>
+    <a class="nav-title" href="index.html">🍽️ Mi Restaurante</a>
     <div class="nav-right">
         <a href="index.html">Inicio</a>
         <a href="dashboard.html">Mi Cuenta</a>
-        <a href="mi_pedido.html">Pedido <span id="cart-count" class="cart-count">0</span></a>
+        <a href="mi_pedido.html">Mi Pedido</a>
     </div>
 </nav>
 
-<h1 style="color: #e8dccc; margin-top: 30px; font-size: 3rem;">Menú de Especialidades</h1>
+<h1 class="titulo-pagina">Nuestras Especialidades</h1>
 
-<h2 class="categoria-titulo">TACOS</h2>
+<div class="categoria-header">TACOS</div>
 <div class="menu-grid">
     <div class="menu-card">
         <h2>Tacos al Pastor</h2>
-        <p>Deliciosa carne marinada con piña, cebolla y cilantro.</p>
+        <p>Tradicionales con piña y salsa secreta.</p>
         <span class="precio">$45.00</span>
-        <button class="btn" onclick="agregar('Tacos al Pastor', 45)">Agregar al pedido</button>
+        <button class="btn-agregar" onclick="simularAgregar('Tacos al Pastor', 45)">Agregar al Pedido</button>
     </div>
     <div class="menu-card">
         <h2>Tacos de Bistec</h2>
-        <p>Carne de res de primera calidad asada al carbón.</p>
+        <p>Carne asada al momento con cebollitas.</p>
         <span class="precio">$50.00</span>
-        <button class="btn" onclick="agregar('Tacos de Bistec', 50)">Agregar al pedido</button>
+        <button class="btn-agregar" onclick="simularAgregar('Tacos de Bistec', 50)">Agregar al Pedido</button>
     </div>
 </div>
 
-<h2 class="categoria-titulo">BEBIDAS</h2>
+<div class="categoria-header">BEBIDAS</div>
 <div class="menu-grid">
     <div class="menu-card">
         <h2>Agua de Horchata</h2>
-        <p>Receta artesanal hecha con arroz, canela y leche.</p>
+        <p>Receta clásica con canela de Ceilán.</p>
         <span class="precio">$25.00</span>
-        <button class="btn" onclick="agregar('Agua de Horchata', 25)">Agregar al pedido</button>
+        <button class="btn-agregar" onclick="simularAgregar('Agua de Horchata', 25)">Agregar al Pedido</button>
     </div>
 </div>
 
 <script>
-    // Función para manejar el carrito simulado
-    function agregar(nombre, precio) {
+    function simularAgregar(nombre, precio) {
         let pedido = JSON.parse(localStorage.getItem('pedido')) || [];
-        
-        // Buscamos si ya existe el item
-        const index = pedido.findIndex(item => item.nombre === nombre);
-        if (index !== -1) {
-            pedido[index].cantidad += 1;
-        } else {
-            pedido.push({ nombre, precio, cantidad: 1 });
-        }
-
+        pedido.push({ nombre, precio, cantidad: 1 });
         localStorage.setItem('pedido', JSON.stringify(pedido));
-        actualizarContador();
-        alert(`${nombre} agregado con éxito.`);
+        alert('Se agregó ' + nombre + ' a tu pedido (Simulación)');
     }
-
-    function actualizarContador() {
-        const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
-        const totalItems = pedido.reduce((sum, item) => sum + item.cantidad, 0);
-        document.getElementById('cart-count').innerText = totalItems;
-    }
-
-    // Al cargar la página, actualizamos el número del carrito
-    document.addEventListener('DOMContentLoaded', actualizarContador);
 </script>
 
 </body>
